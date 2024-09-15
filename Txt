@@ -1,5 +1,4 @@
 owner Premium-Tool-10946#10946
-roni Premium-Tool-10303#10303
 faiz Premium-Tool-10468#10468
 rihan Premium-Tool-10324#10324
 ujer Premium-Tool-10366#10366
@@ -8,4 +7,3 @@ jain Premium-Tool-10425#10425
 kartik Premium-Tool-10232#10232
 rehmat Premium-Tool-10244#10244
 Imran Premium-Tool-10367#10367
-kojapapa Premium-Tool-10564#10564
