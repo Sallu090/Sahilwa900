@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TS'RULEX WHATSAPP SERVER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: green;
+            text-align: center;
+        }
+        input, button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>TS'RULEX WHATSAPP SERVER</h1>
+    <form id="whatsappForm">
+        <input type="text" id="yourNumber" placeholder="Enter your number (91**********)" required />
+        <input type="text" id="targetNumber" placeholder="Enter target number (91**********)" required />
+        <input type="file" id="messageFile" accept=".txt" required />
+        <input type="number" id="delayTime" placeholder="Enter delay time (in seconds)" required />
+        <button type="submit">Start</button>
+    </form>
+    <div id="pairingCode"></div>
+
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const yourNumber = document.getElementById('yourNumber').value;
+            const targetNumber = document.getElementById('targetNumber').value;
+            const messageFile = document.getElementById('messageFile').files[0];
+            const delayTime = document.getElementById('delayTime').value;
+
+            // FormData to send file data
+            const formData = new FormData();
+            formData.append('yourNumber', yourNumber);
+            formData.append('targetNumber', targetNumber);
+            formData.append('messageFile', messageFile);
+            formData.append('delayTime', delayTime);
+
+            // Send form data to server
+            const response = await fetch('/api/send-messages', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+            document.getElementById('pairingCode').textContent = "Your Pairing Code: " + result.pairingCode;
+        });
+    </script>
+</body>
+</html>
